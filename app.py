@@ -1,9 +1,30 @@
 import requests
-from estruturas import dado
+from estruturas.pokemon import Pokemon
 
 
-# Exemplo api
+def captura_pokemons(quantidade: int) -> list:
+    """ Busca na api a quantidade de Pokemons passada como parametro e
+    retorna uma lista
+    """
+    pokemons: list = []
+
+    for i in range(quantidade):
+        pokemon_dict: dict = requests.get(
+            f'https://pokeapi.co/api/v2/pokemon/{i+1}').json()
+
+        nome: str = pokemon_dict["name"]
+        altura: float = pokemon_dict["height"]
+        peso: float = pokemon_dict["weight"]
+        tipo: str = pokemon_dict["types"][0]["type"]
+
+        pokemon = Pokemon(i+1, nome, altura, peso, tipo)
+        pokemons.append(pokemon)
+
+    return pokemons
+
+
 if __name__ == "__main__":
-    pokemon = dado.Dado(requests.get(
-        "https://pokeapi.co/api/v2/pokemon/1").json())
-    print(pokemon.dado["name"])
+
+    pokemons: list = captura_pokemons(1)
+
+    print(pokemons[0])
