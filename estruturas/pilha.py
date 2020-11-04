@@ -34,9 +34,10 @@ class PilhaEncadeada:
             self.__head = no
             self.__tamanho += 1
 
-    def
-            raise Exceptions('A fila está vazia')
-        return self.__inicio
+    def elemento(self):
+        if(self.vazia()):
+            raise Exceptions('A pilha está vazia')
+        return self.__head
 
     def __str__(self):
         saida = 'Fila: ['
