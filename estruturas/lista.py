@@ -134,7 +134,7 @@ class ListaEncadeada:
 
             while p != None:  
                 if p.dado.tipo == dado:
-                    v += p.dado
+                    v += [p.dado]
                     ocorre += 1
                 else:
                     contador += 1
