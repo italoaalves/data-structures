@@ -92,6 +92,38 @@ class ListaEncadeada:
         except:
             raise
 
+
+    def elemento(self, posicao):
+        try:
+            assert posicao > 0
+
+            if self.vazia():
+                raise EstruturaException('A lista está vazia')
+            p = self.__head
+            contador = 1
+
+            while (contador <= posicao - 1) and (p != None):
+                anterior = p
+                p = p.prox
+                if contador == posicao - 1:
+                    return p.dado
+                else:
+                    contador += 1
+
+            if p == None:
+                raise EstruturaException('Posição inválida para busca')
+            dado = p.dado
+
+            if posicao == 1:
+                return self.__head
+
+        except TypeError:
+            raise EstruturaException('A posição deve ser um valor inteiro')
+        except AssertionError:
+            raise EstruturaException('Posição negativa não é valida')
+        except:
+            raise
+
     def __str__(self):
         saida = 'Fila: ['
         cursor = self.__head
