@@ -77,7 +77,7 @@ class ListaEncadeada:
 
             if p == None:
                 raise EstruturaException('Posição inválida para remoção')
-            dado = p.dado
+           
 
             if posicao == 1:
                 self.__head = p.prox
@@ -103,7 +103,6 @@ class ListaEncadeada:
             contador = 1
 
             while (contador <= posicao - 1) and (p != None):
-                anterior = p
                 p = p.prox
                 if contador == posicao - 1:
                     return p.dado
@@ -112,10 +111,40 @@ class ListaEncadeada:
 
             if p == None:
                 raise EstruturaException('Posição inválida para busca')
-            dado = p.dado
 
             if posicao == 1:
                 return self.__head
+
+        except TypeError:
+            raise EstruturaException('A posição deve ser um valor inteiro')
+        except AssertionError:
+            raise EstruturaException('Posição negativa não é valida')
+        except:
+            raise
+
+    def busca(self, dado):
+        try:
+            if self.vazia():
+                raise EstruturaException('A lista está vazia')
+
+            v = []
+            p = self.__head
+            contador = 1
+            ocorre = 0
+
+            while p != None:  
+                if p.dado.tipo == dado:
+                    v += p.dado
+                    ocorre += 1
+                else:
+                    contador += 1
+                p = p.prox
+
+            if ocorre == 0:
+                raise EstruturaException('Pokemon não registrado na pokedex')
+
+            else:
+                return v
 
         except TypeError:
             raise EstruturaException('A posição deve ser um valor inteiro')
@@ -129,7 +158,6 @@ class ListaEncadeada:
         cursor = self.__head
 
         while cursor != None:
-            aux = cursor.dado
             saida += f'{cursor.dado}'
             cursor = cursor.prox
             if cursor != None:
