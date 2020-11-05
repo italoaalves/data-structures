@@ -29,7 +29,8 @@ class ListaEncadeada:
 
             if self.vazia():
                 if posicao != 1:
-                    raise Exceptions('lista vazia, insira apenas na posição 1')
+                    raise EstruturaException(
+                        'lista vazia, insira apenas na posição 1')
                 self.__head = Node(dado)
                 self.__tamanho += 1
                 return
@@ -47,16 +48,16 @@ class ListaEncadeada:
                 p = p.prox
                 contador += 1
             if p == None:
-                raise Exceptions('A posição é inválida para inserção')
+                raise EstruturaException('A posição é inválida para inserção')
             novo = Node(dado)
             novo.prox = p.prox
             p.prox = novo
             self.__tamanho += 1
 
         except TypeError:
-            raise Exceptions('A posição deve ser um valor inteiro')
+            raise EstruturaException('A posição deve ser um valor inteiro')
         except AssertionError:
-            raise Exceptions('Posição negativa não é valida')
+            raise EstruturaException('Posição negativa não é valida')
         except:
             raise
 
@@ -65,7 +66,7 @@ class ListaEncadeada:
             assert posicao > 0
 
             if self.vazia():
-                raise Exceptions('A lista está vazia')
+                raise EstruturaException('A lista está vazia')
             p = self.__head
             contador = 1
 
@@ -75,7 +76,7 @@ class ListaEncadeada:
                 contador += 1
 
             if p == None:
-                raise Exceptions('Posição inválida para remoção')
+                raise EstruturaException('Posição inválida para remoção')
             dado = p.dado
 
             if posicao == 1:
@@ -85,9 +86,9 @@ class ListaEncadeada:
                 anterior.prox = p.prox
 
         except TypeError:
-            raise Exceptions('A posição deve ser um valor inteiro')
+            raise EstruturaException('A posição deve ser um valor inteiro')
         except AssertionError:
-            raise Exceptions('Posição negativa não é valida')
+            raise EstruturaException('Posição negativa não é valida')
         except:
             raise
 

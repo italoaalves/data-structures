@@ -1,6 +1,7 @@
 from estruturas.excecoes import EstruturaException
 from estruturas.no import Node
 
+
 class PilhaEncadeada:
     def __init__(self):
         self.__head = None
@@ -39,7 +40,7 @@ class PilhaEncadeada:
 
     def elemento(self):
         if(self.vazia()):
-            raise Exceptions('A pilha está vazia')
+            raise EstruturaException('A pilha está vazia')
         return self.__head
 
     def __str__(self):
