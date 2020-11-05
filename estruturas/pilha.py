@@ -43,6 +43,12 @@ class PilhaEncadeada:
             raise EstruturaException('A pilha está vazia')
         return self.__head
 
+    def remover(self):
+        if self.vazia():
+            raise Exceptions('A fila está vazia')
+        self.__inicio = self.__inicio.prox
+        self.__tamanho -= 1
+
     def __str__(self):
         saida = 'Fila: ['
         cursor = self.__head
