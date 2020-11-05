@@ -1,6 +1,3 @@
-import Exception
-
-
-class Exceptions(Exception):
+class EstruturaException(Exception):
     def __init__(self, mensagem):
         super().__init__(mensagem)

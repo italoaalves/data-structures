@@ -1,3 +1,7 @@
+from estruturas.excecoes import EstruturaException
+from estruturas.no import Node
+
+
 class FilaEncadeada:
     def __init__(self):
         self.__inicio = None
