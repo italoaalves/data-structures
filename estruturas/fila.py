@@ -42,12 +42,6 @@ class FilaEncadeada:
             ultimo_elem.prox = no
             self.__tamanho += 1
 
-    def remover(self):
-        if self.vazia():
-            raise EstruturaException('A fila está vazia')
-        self.__inicio = self.__inicio.prox
-        self.__tamanho -= 1
-
     def __str__(self):
         saida = 'Fila: ['
         cursor = self.__inicio
