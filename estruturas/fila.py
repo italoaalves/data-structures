@@ -16,13 +16,13 @@ class FilaEncadeada:
 
     def remover(self):
         if self.vazia():
-            raise Exceptions('A fila está vazia')
+            raise EstruturaException('A fila está vazia')
         self.__inicio = self.__inicio.prox
         self.__tamanho -= 1
 
     def elemento(self):
         if(self.vazia()):
-            raise Exceptions('A fila está vazia')
+            raise EstruturaException('A fila está vazia')
         return self.__inicio
 
     def inserir(self, dado):
@@ -41,12 +41,6 @@ class FilaEncadeada:
             no.prox = ultimo_elem.prox
             ultimo_elem.prox = no
             self.__tamanho += 1
-
-    def remover(self):
-        if self.vazia():
-            raise Exceptions('A fila está vazia')
-        self.__inicio = self.__inicio.prox
-        self.__tamanho -= 1
 
     def __str__(self):
         saida = 'Fila: ['
