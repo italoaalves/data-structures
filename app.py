@@ -2,7 +2,7 @@ import requests
 from estruturas.pokemon import Pokemon
 
 
-def captura_pokemons(quantidade: int) -> list:
+def captura_pokemons(quantidade: int = 1) -> list:
     """ Busca na api a quantidade de Pokemons passada como parametro e
     retorna uma lista
     """
@@ -15,7 +15,7 @@ def captura_pokemons(quantidade: int) -> list:
         nome: str = pokemon_dict["name"]
         altura: float = pokemon_dict["height"]
         peso: float = pokemon_dict["weight"]
-        tipo: str = pokemon_dict["types"][0]["type"]
+        tipo: str = pokemon_dict["types"][0]["type"]["name"]
 
         pokemon = Pokemon(i+1, nome, altura, peso, tipo)
         pokemons.append(pokemon)
@@ -24,7 +24,6 @@ def captura_pokemons(quantidade: int) -> list:
 
 
 if __name__ == "__main__":
+    pokemons: list = captura_pokemons()
 
-    pokemons: list = captura_pokemons(1)
-
-    print(pokemons[0])
+    print(pokemons[0].nome, pokemons[0].tipo)
