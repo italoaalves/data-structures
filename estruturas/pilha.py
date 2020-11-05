@@ -1,3 +1,6 @@
+from estruturas.excecoes import EstruturaException
+from estruturas.no import Node
+
 class PilhaEncadeada:
     def __init__(self):
         self.__head = None
