@@ -127,14 +127,14 @@ class ListaEncadeada:
             if self.vazia():
                 raise EstruturaException('A lista está vazia')
 
-            v = []
+            lista = []
             p = self.__head
             contador = 1
             ocorre = 0
 
             while p != None:  
                 if p.dado.tipo == dado:
-                    v += [p.dado]
+                    lista.append(p.dado)
                     ocorre += 1
                 else:
                     contador += 1
@@ -144,7 +144,7 @@ class ListaEncadeada:
                 raise EstruturaException('Pokemon não registrado na pokedex')
 
             else:
-                return v
+                return lista
 
         except TypeError:
             raise EstruturaException('A posição deve ser um valor inteiro')
