@@ -20,10 +20,12 @@ if __name__ == "__main__":
             break
         except AssertionError:
             print("Você precisa inserir um valor inteiro positivo.")
-
+        except ValueError:
+            print("Você precisa inserir um valor inteiro positivo.")
+        
     system('cls' if name == 'nt' else 'clear')
 
-    aleatorio = quantidade_pokemons < 150
+    aleatorio = quantidade_pokemons != 150
     tarefas_lista(quantidade_pokemons, captura_pokemons(
         quantidade_pokemons, aleatorio))
 
