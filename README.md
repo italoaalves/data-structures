@@ -14,7 +14,7 @@ $ python app.py
 ```
 
 ## Pokeapi
-Utilizamos da API disponivel em [pokeapi](htttps://pokeapi.co) para preencher o nosso modelo de dados.
+Utilizamos da API disponivel em [pokeapi](https://pokeapi.co) para preencher o nosso modelo de dados.
 
 ## Especificação do projeto
 O objetivo deste projeto é implementar as principais estruturas de
