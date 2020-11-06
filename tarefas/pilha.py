@@ -45,4 +45,4 @@ def tarefas_pilha(quantidade_pokemons: int, pokemons: list) -> None:
     elemento: object = pilha_pokemons.elemento()
     print(elemento)
 
-    print("FIM PILHA\n")
+    print("\nFIM PILHA\n")

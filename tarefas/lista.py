@@ -64,9 +64,9 @@ def tarefas_lista(quantidade_pokemons: int, pokemons: list) -> None:
 
     # Busca com falha
     try:
-        print("\n8 - Buscando Pokemons por um tipo inexistente...")
+        print("\n\n8 - Buscando Pokemons por um tipo inexistente...")
         resultados: list = lista_pokemons.busca_por("tipo", "carburador")
     except EstruturaException as ee:
         print("Resultados da busca com falha:", ee)
 
-    print("FIM LISTA\n")
+    print("\nFIM LISTA\n")
