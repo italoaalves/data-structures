@@ -1,5 +1,5 @@
 # ProjetoED
-Repositório do Projeto da disciplina de Estruturas de Dados. Como nosso modelo de dados para os nós resolvemos representar pokemons.
+Repositório do Projeto da disciplina de Estruturas de Dados. Escohemos Pokemons para nosso modelo de dado.
 
 ## Como executar este projeto
 ```console
