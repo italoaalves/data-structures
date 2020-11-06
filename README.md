@@ -1,7 +1,7 @@
 # ProjetoED
 Repositório do Projeto da disciplina de Estruturas de Dados. Como nosso modelo de dados para os nós resolvemos representar pokemons.
 
-## Como executar esse projeto
+## Como executar este projeto
 ```console
 $ git clone https://github.com/italoaalves/projeto-ed/
 $ cd projeto-ed
@@ -14,7 +14,7 @@ $ python app.py
 ```
 
 ## Pokeapi
-Utilizamos da API disponivel em [pokeapi](pokeapi.co) para preencher o nosso modelo de dados.
+Utilizamos da API disponivel em [pokeapi](htttps://pokeapi.co) para preencher o nosso modelo de dados.
 
 ## Especificação do projeto
 O objetivo deste projeto é implementar as principais estruturas de
