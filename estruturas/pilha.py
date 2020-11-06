@@ -15,12 +15,13 @@ class PilhaEncadeada:
     def head(self, novoNo) -> None:
         self.__head = novoNo
 
+    @property
+    def tamanho(self) -> int:
+        return self.__tamanho
+
     def vazia(self) -> bool:
         if self.__tamanho == 0:
             return True
-
-    def tamanho(self) -> int:
-        return self.__tamanho
 
     def inserir(self, dado) -> None:
         no: object = Node(dado)

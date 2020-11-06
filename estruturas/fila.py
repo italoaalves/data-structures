@@ -7,12 +7,13 @@ class FilaEncadeada:
         self.__head: object = None
         self.__tamanho: int = 0
 
+    @property
+    def tamanho(self) -> int:
+        return self.__tamanho
+
     def vazia(self) -> bool:
         if self.__tamanho == 0:
             return True
-
-    def tamanho(self) -> int:
-        return self.__tamanho
 
     def remover(self) -> None:
         if self.vazia():
