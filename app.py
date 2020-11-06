@@ -8,7 +8,18 @@ from tarefas.pilha import tarefas_pilha
 
 
 if __name__ == "__main__":
-    quantidade_pokemons: int = 15
+    print("Este programa executa as tarefas que cumprem os requisitos do projeto.")
+
+    while True:
+        try:
+            quantidade_pokemons: int = int(
+                input("Insira a quantidade de pokemons para trabalhar: "))
+            assert isinstance(quantidade_pokemons,
+                              int) and quantidade_pokemons > 0
+            break
+        except AssertionError:
+            print("Você precisa inserir um valor inteiro positivo.")
+
     pokemons: list = captura_pokemons(quantidade_pokemons)
     pokemons_batalha: list = []
 
@@ -17,5 +28,12 @@ if __name__ == "__main__":
     for i in range(6):
         pokemons_batalha.append(pokemons[randint(1, quantidade_pokemons - 1)])
 
+    input("Enter para continuar")
+
     tarefas_fila(6, pokemons_batalha)
+
+    input("Enter para continuar")
+
     tarefas_pilha(6, pokemons_batalha)
+
+    input("Enter para finalizar")

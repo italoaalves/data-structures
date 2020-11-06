@@ -8,23 +8,20 @@ class FilaEncadeada:
         self.__tamanho: int = 0
 
     @property
+    def head(self) -> object:
+        return self.__head
+
+    @head.setter
+    def head(self, novoHead: object = None) -> None:
+        self.__head = novoHead
+
+    @property
     def tamanho(self) -> int:
         return self.__tamanho
 
     def vazia(self) -> bool:
         if self.__tamanho == 0:
             return True
-
-    def remover(self) -> None:
-        if self.vazia():
-            raise EstruturaException('A fila está vazia')
-        self.__head = self.__head.prox
-        self.__tamanho -= 1
-
-    def elemento(self) -> object:
-        if(self.vazia()):
-            raise EstruturaException('A fila está vazia')
-        return self.__head
 
     def inserir(self, dado) -> None:
         cursor: object = self.__head
@@ -42,6 +39,17 @@ class FilaEncadeada:
             no.prox = ultimo_elem.prox
             ultimo_elem.prox = no
             self.__tamanho += 1
+
+    def remover(self) -> None:
+        if self.vazia():
+            raise EstruturaException('A fila está vazia')
+        self.__head = self.__head.prox
+        self.__tamanho -= 1
+
+    def elemento(self) -> object:
+        if(self.vazia()):
+            raise EstruturaException('A fila está vazia')
+        return self.__head
 
     def __str__(self) -> str:
         saida: str = 'Fila: ['

@@ -1,28 +1,30 @@
+from typing import Union
 from estruturas.excecoes import EstruturaException
 from estruturas.no import Node
 
 
 class ListaEncadeada:
-    def __init__(self):
+    def __init__(self) -> None:
         self.__head = None
         self.__tamanho = 0
 
     @property
-    def head(self):
+    def head(self) -> object:
         return self.__head
 
     @head.setter
-    def head(self, no):
-        self.__head = no
+    def head(self, novoHead: object = None) -> None:
+        self.__head = novoHead
 
-    def vazia(self):
+    @property
+    def tamanho(self) -> int:
+        return self.__tamanho
+
+    def vazia(self) -> bool:
         if self.__tamanho == 0:
             return True
 
-    def tamanho(self):
-        return self.__tamanho
-
-    def inserir(self, posicao, dado):
+    def inserir(self, posicao: int, dado: object) -> None:
         try:
             assert posicao > 0
 
@@ -63,7 +65,7 @@ class ListaEncadeada:
         except:
             raise
 
-    def remover(self, posicao) -> None:
+    def remover(self, posicao: int) -> None:
         try:
             assert posicao > 0
 
@@ -96,7 +98,7 @@ class ListaEncadeada:
         except:
             raise
 
-    def elemento(self, posicao) -> object:
+    def elemento(self, posicao: int) -> object:
         try:
             assert posicao > 0
 
@@ -125,7 +127,7 @@ class ListaEncadeada:
         except:
             raise
 
-    def busca_por(self, chave, dado) -> list:
+    def busca_por(self, chave: str, dado: Union[str, int]) -> list:
         try:
             if self.vazia():
                 raise EstruturaException('A lista está vazia')
@@ -156,20 +158,11 @@ class ListaEncadeada:
         except:
             raise
 
-    def __str__(self) -> str:
-        saida: str = 'Lista: ['
-        cursor: object = self.__head
-
-        while cursor != None:
-            saida += f'{str(cursor.dado)}'
-            cursor = cursor.prox
-            if cursor != None:
-                saida += ', '
-
-        saida += ']'
-        return saida
-
-    def ordena_por(self, chave) -> None:
+    def ordenar_por(self, chave: str) -> None:
+        """Usa Bubble sort para ordenar a lista sequencial
+        a chave passada como parametro será o critério
+        para a ordenação
+        """
         for i in range(self.__tamanho-1):
             atual: object = self.__head
             seguinte: object = atual.prox
@@ -194,3 +187,16 @@ class ListaEncadeada:
                     atual = seguinte
                     seguinte = seguinte.prox
             i = i+1
+
+    def __str__(self) -> str:
+        saida: str = 'Lista: ['
+        cursor: object = self.__head
+
+        while cursor != None:
+            saida += f'{str(cursor.dado)}'
+            cursor = cursor.prox
+            if cursor != None:
+                saida += ', '
+
+        saida += ']'
+        return saida
