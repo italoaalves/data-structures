@@ -23,9 +23,9 @@ if __name__ == "__main__":
 
     system('cls' if name == 'nt' else 'clear')
 
-    pokemons: list = captura_pokemons(quantidade_pokemons)
-
-    tarefas_lista(quantidade_pokemons, pokemons)
+    aleatorio = quantidade_pokemons < 150
+    tarefas_lista(quantidade_pokemons, captura_pokemons(
+        quantidade_pokemons, aleatorio))
 
     input("Enter para continuar")
 

@@ -26,6 +26,10 @@ def tarefas_lista(quantidade_pokemons: int, pokemons: list) -> None:
     lista_pokemons.remover(quantidade_pokemons)  # remove o ultimo inserido
     print(lista_pokemons)
 
+    # Reinserindo elemento na lista
+    lista_pokemons.inserir(quantidade_pokemons,
+                           pokemons[quantidade_pokemons-1])
+
     # Vazio
     print("\n3 - Mostrando se a lista está vazia ou não...")
     vazia: bool = lista_pokemons.vazia()
@@ -51,9 +55,10 @@ def tarefas_lista(quantidade_pokemons: int, pokemons: list) -> None:
         print("\n7 - Buscando Pokemons pelo tipo grama...")
         resultados: list = lista_pokemons.busca_por("tipo", "grass")
         print("Resultados da busca: [", end="")
-        for resultado in resultados:
-            print(resultado, ", ", end="")
-        print("]")
+        tamanho_resultados = len(resultados)
+        for i in range(tamanho_resultados):
+            print(resultados[i], end=", " if i <
+                  tamanho_resultados - 1 else ']')
     except EstruturaException as ee:
         print(ee)
 
