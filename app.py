@@ -1,29 +1,21 @@
-import requests
-from estruturas.pokemon import Pokemon
+from random import randint
 
+from es.pokeapi import captura_pokemons
 
-def captura_pokemons(quantidade: int = 1) -> list:
-    """ Busca na api a quantidade de Pokemons passada como parametro e
-    retorna uma lista
-    """
-    pokemons: list = []
-
-    for i in range(quantidade):
-        pokemon_dict: dict = requests.get(
-            f'https://pokeapi.co/api/v2/pokemon/{i+1}').json()
-
-        nome: str = pokemon_dict["name"]
-        altura: float = pokemon_dict["height"]
-        peso: float = pokemon_dict["weight"]
-        tipo: str = pokemon_dict["types"][0]["type"]["name"]
-
-        pokemon = Pokemon(i+1, nome, altura, peso, tipo)
-        pokemons.append(pokemon)
-
-    return pokemons
+from tarefas.lista import tarefas_lista
+from tarefas.fila import tarefas_fila
+from tarefas.pilha import tarefas_pilha
 
 
 if __name__ == "__main__":
-    pokemons: list = captura_pokemons()
+    quantidade_pokemons = 15
+    pokemons: list = captura_pokemons(quantidade_pokemons)
+    pokemons_batalha: list = []
 
-    print(pokemons[0].nome, pokemons[0].tipo)
+    tarefas_lista(quantidade_pokemons, pokemons)
+
+    for i in range(6):
+        pokemons_batalha.append(pokemons[randint(1, quantidade_pokemons - 1)])
+
+    tarefas_fila(6, pokemons_batalha)
+    tarefas_pilha(6, pokemons_batalha)
