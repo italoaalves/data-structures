@@ -35,9 +35,9 @@ class ListaEncadeada:
                 return
 
             if posicao == 1:
-                novo = Node(dado)
-                novo.prox = self.__head
-                self.__head = novo
+                no = Node(dado)
+                no.prox = self.__head
+                self.__head = no
                 self.__tamanho += 1
                 return
 
@@ -51,9 +51,9 @@ class ListaEncadeada:
             if cursor == None:
                 raise EstruturaException('A posição é inválida para inserção')
 
-            novo = Node(dado)
-            novo.prox = cursor.prox
-            cursor.prox = novo
+            no = Node(dado)
+            no.prox = cursor.prox
+            cursor.prox = no
             self.__tamanho += 1
 
         except TypeError:
@@ -63,15 +63,15 @@ class ListaEncadeada:
         except:
             raise
 
-    def remover(self, posicao):
+    def remover(self, posicao) -> None:
         try:
             assert posicao > 0
 
             if self.vazia():
                 raise EstruturaException('A lista está vazia')
 
-            cursor = self.__head
-            contador = 1
+            cursor: object = self.__head
+            contador: int = 1
 
             while (contador <= posicao - 1) and (cursor != None):
                 anterior = cursor
@@ -96,7 +96,7 @@ class ListaEncadeada:
         except:
             raise
 
-    def elemento(self, posicao):
+    def elemento(self, posicao) -> object:
         try:
             assert posicao > 0
 
@@ -125,15 +125,15 @@ class ListaEncadeada:
         except:
             raise
 
-    def busca_por(self, chave, dado):
+    def busca_por(self, chave, dado) -> list:
         try:
             if self.vazia():
                 raise EstruturaException('A lista está vazia')
 
-            lista = []
-            cursor = self.__head
-            contador = 1
-            ocorre = 0
+            lista: list = []
+            cursor: object = self.__head
+            contador: int = 1
+            ocorre: int = 0
 
             while cursor != None:
                 if getattr(cursor.dado, chave) == dado:
@@ -156,9 +156,9 @@ class ListaEncadeada:
         except:
             raise
 
-    def __str__(self):
-        saida = 'Lista: ['
-        cursor = self.__head
+    def __str__(self) -> str:
+        saida: str = 'Lista: ['
+        cursor: object = self.__head
 
         while cursor != None:
             saida += f'{str(cursor.dado)}'
@@ -169,11 +169,11 @@ class ListaEncadeada:
         saida += ']'
         return saida
 
-    def ordena_por(self, chave):
+    def ordena_por(self, chave) -> None:
         for i in range(self.__tamanho-1):
-            atual = self.__head
-            seguinte = atual.prox
-            anterior = None
+            atual: object = self.__head
+            seguinte: object = atual.prox
+            anterior: object = None
             while seguinte:
                 if getattr(atual.dado, chave) > getattr(seguinte.dado, chave):
                     if anterior == None:
@@ -183,7 +183,7 @@ class ListaEncadeada:
                         atual.prox = seguinte
                         self.start = anterior
                     else:
-                        temp = seguinte
+                        temp: object = seguinte
                         seguinte = seguinte.prox
                         anterior.prox = atual.prox
                         anterior = temp

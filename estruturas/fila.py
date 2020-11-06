@@ -3,34 +3,34 @@ from estruturas.no import Node
 
 
 class FilaEncadeada:
-    def __init__(self):
-        self.__inicio = None
-        self.__tamanho = 0
+    def __init__(self) -> None:
+        self.__head: object = None
+        self.__tamanho: int = 0
 
-    def vazia(self):
+    def vazia(self) -> bool:
         if self.__tamanho == 0:
             return True
 
-    def tamanho(self):
+    def tamanho(self) -> int:
         return self.__tamanho
 
-    def remover(self):
+    def remover(self) -> None:
         if self.vazia():
             raise EstruturaException('A fila está vazia')
-        self.__inicio = self.__inicio.prox
+        self.__head = self.__head.prox
         self.__tamanho -= 1
 
-    def elemento(self):
+    def elemento(self) -> object:
         if(self.vazia()):
             raise EstruturaException('A fila está vazia')
-        return self.__inicio
+        return self.__head
 
-    def inserir(self, dado):
-        cursor = self.__inicio
+    def inserir(self, dado) -> None:
+        cursor: object = self.__head
 
         if self.vazia():
             no = Node(dado)
-            self.__inicio = no
+            self.__head = no
             no.prox = None
             self.__tamanho += 1
         else:
@@ -42,9 +42,9 @@ class FilaEncadeada:
             ultimo_elem.prox = no
             self.__tamanho += 1
 
-    def __str__(self):
-        saida = 'Fila: ['
-        cursor = self.__inicio
+    def __str__(self) -> str:
+        saida: str = 'Fila: ['
+        cursor: object = self.__head
 
         while cursor != None:
             saida += f'{str(cursor.dado)}'
