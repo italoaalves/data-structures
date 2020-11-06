@@ -8,7 +8,7 @@ from tarefas.pilha import tarefas_pilha
 
 
 if __name__ == "__main__":
-    quantidade_pokemons = 15
+    quantidade_pokemons: int = 15
     pokemons: list = captura_pokemons(quantidade_pokemons)
     pokemons_batalha: list = []
 
