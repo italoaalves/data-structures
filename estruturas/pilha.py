@@ -12,7 +12,7 @@ class PilhaEncadeada:
         return self.__head
 
     @head.setter
-    def head(self, novoNo) -> None:
+    def head(self, novoNo: object) -> None:
         self.__head = novoNo
 
     @property
@@ -23,7 +23,7 @@ class PilhaEncadeada:
         if self.__tamanho == 0:
             return True
 
-    def inserir(self, dado) -> None:
+    def inserir(self, dado: object) -> None:
         no: object = Node(dado)
 
         if self.vazia():
@@ -35,16 +35,16 @@ class PilhaEncadeada:
             self.__head = no
             self.__tamanho += 1
 
-    def elemento(self) -> object:
-        if(self.vazia()):
-            raise EstruturaException('A pilha está vazia')
-        return self.__head
-
     def remover(self) -> None:
         if self.vazia():
             raise EstruturaException('A fila está vazia')
         self.__head = self.__head.prox
         self.__tamanho -= 1
+
+    def elemento(self) -> object:
+        if(self.vazia()):
+            raise EstruturaException('A pilha está vazia')
+        return self.__head
 
     def __str__(self) -> str:
         saida: str = 'Pilha: ['

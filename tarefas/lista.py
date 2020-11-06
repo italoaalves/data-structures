@@ -1,6 +1,6 @@
 from random import randint
+
 from estruturas.excecoes import EstruturaException
-from es import imprime_estrutura
 from estruturas.lista import ListaEncadeada
 
 
@@ -14,33 +14,39 @@ def tarefas_lista(quantidade_pokemons: int, pokemons: list) -> None:
 
     # Lista
     # Inserção
+    print("\n1 - Inserindo dados na lista...")
     for i in range(quantidade_pokemons):
         lista_pokemons.inserir(i + 1, pokemons[i])
-
-    imprime_estrutura(lista_pokemons)
+    print(lista_pokemons)
 
     # Remoção
+    print("\n2 - Removendo elemento da lista...")
     lista_pokemons.remover(quantidade_pokemons)  # remove o ultimo inserido
-    imprime_estrutura(lista_pokemons)
+    print(lista_pokemons)
 
     # Vazio
+    print("\n3 - Mostrando se a lista está vazia ou não...")
     vazia: bool = lista_pokemons.vazia()
     print("lista ", "Vazia" if vazia else "Não vazia")
 
     # Tamanho
-    tamanho: int = lista_pokemons.tamanho()
+    print("\n4 - Exibindo o tamanho da lista...")
+    tamanho: int = lista_pokemons.tamanho
     print("Tamanho da lista: ", tamanho)
 
     # Mostrar elemento
+    print("\n5 - Exibindo elemento da lista...")
     elemento: object = lista_pokemons.elemento(randint(1, quantidade_pokemons))
     print(elemento)
 
     # Ordenar lista
-    lista_pokemons.ordena_por("peso")
-    imprime_estrutura(lista_pokemons)
+    print("\n6 - Ordenando a lista pelo peso do Pokemon...")
+    lista_pokemons.ordenar_por("peso")
+    print(lista_pokemons)
 
     # Busca
     try:
+        print("\n7 - Buscando Pokemons pelo tipo...")
         resultados: list = lista_pokemons.busca_por("tipo", "grass")
         print("Resultados da busca: [", end="")
         for resultado in resultados:
@@ -51,10 +57,9 @@ def tarefas_lista(quantidade_pokemons: int, pokemons: list) -> None:
 
     # Busca com falha
     try:
+        print("\n8 - Buscando Pokemons por um tipo inexistente...")
         resultados: list = lista_pokemons.busca_por("tipo", "carburador")
-        print("Resultados da busca: [", end="")
-        for resultado in resultados:
-            print(resultado + ", ", end="")
-        print("]")
     except EstruturaException as ee:
         print("Resultados da busca com falha:", ee)
+
+    print("FIM LISTA\n")
