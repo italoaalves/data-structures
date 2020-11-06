@@ -7,9 +7,7 @@ git clone https://github.com/italoaalves/projeto-ed/
 cd projeto-ed
 
 virtualenv env
-source ./env/bin/activate
-# or on windows
-./env/Scripts/activate
+source ./env/bin/activate # No windows ./env/Scripts/activate
 
 pip install -r requirements.txt
 
