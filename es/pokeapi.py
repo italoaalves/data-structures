@@ -26,15 +26,26 @@ def captura_pokemons(quantidade: int = 1, aleatorio: bool = False) -> list:
     retorna uma lista
     """
     pokemons: list = []
+    loop: object = asyncio.get_event_loop()
 
     print("\nBuscando pokemons, aguarde...")
 
-    loop: object = asyncio.get_event_loop()
-
-    loop.run_until_complete(
-        asyncio.gather(
-            *(captura_pokemon(randint(1, 890) if aleatorio else i+1, pokemons) for i in range(quantidade))
+    if quantidade < 890:
+        loop.run_until_complete(
+            asyncio.gather(
+                *(captura_pokemon(randint(1, 890) if aleatorio else i+1, pokemons) for i in range(quantidade))
+            )
         )
-    )
+    elif aleatorio:
+        loop.run_until_complete(
+            asyncio.gather(
+                *(captura_pokemon(randint(1, 890) if aleatorio else i+1, pokemons) for i in range(890))
+            )
+        )
+
+        pokemons.extend([pokemons[randint(0, 889)]
+                         for i in range(quantidade-890)])
+    else:
+        raise Exception("Só existem 890 pokemons.")
 
     return pokemons
