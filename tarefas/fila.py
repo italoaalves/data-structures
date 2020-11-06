@@ -45,4 +45,4 @@ def tarefas_fila(quantidade_pokemons: int, pokemons: list) -> None:
     elemento: object = fila_pokemons.elemento()
     print(elemento)
 
-    print("FIM FILA\n")
+    print("\nFIM FILA\n")
