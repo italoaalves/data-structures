@@ -1,6 +1,6 @@
 class Node:
     def __init__(self, dado=None):
-        self.__dado = dado
+        self.__dado: object = dado
         self.__prox = None
 
     @property

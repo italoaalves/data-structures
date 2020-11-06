@@ -23,16 +23,12 @@ class PilhaEncadeada:
         return self.__tamanho
 
     def inserir(self, dado):
-        cursor = self.__head
-
         if self.vazia():
             no = Node(dado)
             self.__head = no
             no.prox = None
             self.__tamanho += 1
-
         else:
-
             no = Node(dado)
             no.prox = self.__head
             self.__head = no
@@ -45,18 +41,18 @@ class PilhaEncadeada:
 
     def remover(self):
         if self.vazia():
-            raise Exceptions('A fila está vazia')
-        self.__inicio = self.__inicio.prox
+            raise EstruturaException('A fila está vazia')
+        self.__head = self.__head.prox
         self.__tamanho -= 1
 
     def __str__(self):
-        saida = 'Fila: ['
+        saida = 'Pilha: ['
         cursor = self.__head
 
         while cursor != None:
-            aux = cursor.dado
-            saida += f'{cursor.dado}'
+            saida += f'{str(cursor.dado)}'
             cursor = cursor.prox
+
             if cursor != None:
                 saida += ', '
 

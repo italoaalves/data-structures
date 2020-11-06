@@ -3,7 +3,6 @@ from estruturas.no import Node
 
 
 class ListaEncadeada:
-
     def __init__(self):
         self.__head = None
         self.__tamanho = 0
@@ -41,17 +40,20 @@ class ListaEncadeada:
                 self.__head = novo
                 self.__tamanho += 1
                 return
-            p = self.__head
+
+            cursor = self.__head
             contador = 1
 
-            while (contador < posicao - 1) and (p != None):
-                p = p.prox
+            while (contador < posicao - 1) and (cursor != None):
+                cursor = cursor.prox
                 contador += 1
-            if p == None:
+
+            if cursor == None:
                 raise EstruturaException('A posição é inválida para inserção')
+
             novo = Node(dado)
-            novo.prox = p.prox
-            p.prox = novo
+            novo.prox = cursor.prox
+            cursor.prox = novo
             self.__tamanho += 1
 
         except TypeError:
@@ -67,23 +69,25 @@ class ListaEncadeada:
 
             if self.vazia():
                 raise EstruturaException('A lista está vazia')
-            p = self.__head
+
+            cursor = self.__head
             contador = 1
 
-            while (contador <= posicao - 1) and (p != None):
-                anterior = p
-                p = p.prox
+            while (contador <= posicao - 1) and (cursor != None):
+                anterior = cursor
+                cursor = cursor.prox
                 contador += 1
 
-            if p == None:
+            if cursor == None:
                 raise EstruturaException('Posição inválida para remoção')
-           
 
             if posicao == 1:
-                self.__head = p.prox
+                self.__head = cursor.prox
 
             else:
-                anterior.prox = p.prox
+                anterior.prox = cursor.prox
+
+            self.__tamanho -= 1
 
         except TypeError:
             raise EstruturaException('A posição deve ser um valor inteiro')
@@ -92,24 +96,23 @@ class ListaEncadeada:
         except:
             raise
 
-
     def elemento(self, posicao):
         try:
             assert posicao > 0
 
             if self.vazia():
                 raise EstruturaException('A lista está vazia')
-            p = self.__head
+            cursor = self.__head
             contador = 1
 
-            while (contador <= posicao - 1) and (p != None):
-                p = p.prox
+            while (contador <= posicao - 1) and (cursor != None):
+                cursor = cursor.prox
                 if contador == posicao - 1:
-                    return p.dado
+                    return cursor.dado
                 else:
                     contador += 1
 
-            if p == None:
+            if cursor == None:
                 raise EstruturaException('Posição inválida para busca')
 
             if posicao == 1:
@@ -122,23 +125,23 @@ class ListaEncadeada:
         except:
             raise
 
-    def busca(self, dado):
+    def busca_por(self, chave, dado):
         try:
             if self.vazia():
                 raise EstruturaException('A lista está vazia')
 
             lista = []
-            p = self.__head
+            cursor = self.__head
             contador = 1
             ocorre = 0
 
-            while p != None:  
-                if p.dado.tipo == dado:
-                    lista.append(p.dado)
+            while cursor != None:
+                if getattr(cursor.dado, chave) == dado:
+                    lista.append(cursor.dado)
                     ocorre += 1
                 else:
                     contador += 1
-                p = p.prox
+                cursor = cursor.prox
 
             if ocorre == 0:
                 raise EstruturaException('Pokemon não registrado na pokedex')
@@ -154,14 +157,40 @@ class ListaEncadeada:
             raise
 
     def __str__(self):
-        saida = 'Fila: ['
+        saida = 'Lista: ['
         cursor = self.__head
 
         while cursor != None:
-            saida += f'{cursor.dado}'
+            saida += f'{str(cursor.dado)}'
             cursor = cursor.prox
             if cursor != None:
                 saida += ', '
 
         saida += ']'
         return saida
+
+    def ordena_por(self, chave):
+        for i in range(self.__tamanho-1):
+            atual = self.__head
+            seguinte = atual.prox
+            anterior = None
+            while seguinte:
+                if getattr(atual.dado, chave) > getattr(seguinte.dado, chave):
+                    if anterior == None:
+                        anterior = atual.prox
+                        seguinte = seguinte.prox
+                        anterior.prox = atual
+                        atual.prox = seguinte
+                        self.start = anterior
+                    else:
+                        temp = seguinte
+                        seguinte = seguinte.prox
+                        anterior.prox = atual.prox
+                        anterior = temp
+                        temp.prox = atual
+                        atual.prox = seguinte
+                else:
+                    anterior = atual
+                    atual = seguinte
+                    seguinte = seguinte.prox
+            i = i+1

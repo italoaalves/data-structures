@@ -47,7 +47,7 @@ class FilaEncadeada:
         cursor = self.__inicio
 
         while cursor != None:
-            saida += f'{cursor.dado}'
+            saida += f'{str(cursor.dado)}'
             cursor = cursor.prox
 
             if cursor != None:
