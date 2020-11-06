@@ -6,7 +6,9 @@ def tarefas_pilha(quantidade_pokemons: int, pokemons: list) -> None:
     que cumprem os requisitos do projeto
     para pilha encadeada
     """
-    print("\n\n----------------------------------------")
+
+    print("\n----------------------------------------")
+    print("Tarefas de Pilha:")
 
     pilha_pokemons: PilhaEncadeada = PilhaEncadeada()
 
@@ -14,17 +16,24 @@ def tarefas_pilha(quantidade_pokemons: int, pokemons: list) -> None:
     print("\n1 - Inserindo dados na pilha...")
     for i in range(6):
         pilha_pokemons.inserir(pokemons[i])
-    print(pilha_pokemons)
+        print(f'passo {i+1}:', pilha_pokemons)
 
     # Remoção da pilha
     print("\n2 - Removendo elemento da pilha...")
-    pilha_pokemons.remover()
-    print(pilha_pokemons)
+    for i in range(pilha_pokemons.tamanho):
+        print(f'Passo {i+1}:', pilha_pokemons)
+        pilha_pokemons.remover()
+    print(f'Passo {i+2}:', pilha_pokemons)
 
     # Vazio
     print("\n3 - Mostrando se a pilha está vazia ou não...")
     vazia: bool = pilha_pokemons.vazia()
     print("Pilha ", "Vazia" if vazia else "Não vazia")
+
+    # Reinserindo elementos
+    print("\nPreenchendo a pilha novamente...")
+    for i in range(6):
+        pilha_pokemons.inserir(pokemons[i])
 
     # Tamanho
     print("\n4 - Exibindo o tamanho da pilha...")

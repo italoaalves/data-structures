@@ -9,6 +9,8 @@ def tarefas_lista(quantidade_pokemons: int, pokemons: list) -> None:
     que cumprem os requisitos do projeto
     para lista encadeada
     """
+    print("\n----------------------------------------")
+    print("Tarefas de Lista:")
 
     lista_pokemons: ListaEncadeada = ListaEncadeada()
 
@@ -20,7 +22,7 @@ def tarefas_lista(quantidade_pokemons: int, pokemons: list) -> None:
     print(lista_pokemons)
 
     # Remoção
-    print("\n2 - Removendo elemento da lista...")
+    print("\n2 - Removendo o ultimo elemento da lista...")
     lista_pokemons.remover(quantidade_pokemons)  # remove o ultimo inserido
     print(lista_pokemons)
 
@@ -46,7 +48,7 @@ def tarefas_lista(quantidade_pokemons: int, pokemons: list) -> None:
 
     # Busca
     try:
-        print("\n7 - Buscando Pokemons pelo tipo...")
+        print("\n7 - Buscando Pokemons pelo tipo grama...")
         resultados: list = lista_pokemons.busca_por("tipo", "grass")
         print("Resultados da busca: [", end="")
         for resultado in resultados:

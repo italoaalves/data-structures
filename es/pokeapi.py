@@ -1,16 +1,19 @@
 import requests
+from random import randint
 from estruturas.pokemon import Pokemon
 
 
-def captura_pokemons(quantidade: int = 1) -> list:
+def captura_pokemons(quantidade: int = 1, aleatorio: bool = False) -> list:
     """ Busca na api a quantidade de Pokemons passada como parametro e
     retorna uma lista
     """
     pokemons: list = []
 
+    print("\nBuscando pokemons, aguarde...")
+
     for i in range(quantidade):
         pokemon_dict: dict = requests.get(
-            f'https://pokeapi.co/api/v2/pokemon/{i+1}').json()
+            f'https://pokeapi.co/api/v2/pokemon/{randint(1, 151) if aleatorio else i+1 }').json()
 
         nome: str = pokemon_dict["name"]
         altura: float = pokemon_dict["height"]

@@ -7,7 +7,8 @@ def tarefas_fila(quantidade_pokemons: int, pokemons: list) -> None:
     para fila encadeada
     """
 
-    print("\n\n----------------------------------------")
+    print("\n----------------------------------------")
+    print("Tarefas de Fila:")
 
     fila_pokemons: FilaEncadeada = FilaEncadeada()
 
@@ -15,17 +16,24 @@ def tarefas_fila(quantidade_pokemons: int, pokemons: list) -> None:
     print("\n1 - Inserindo dados na fila...")
     for i in range(6):
         fila_pokemons.inserir(pokemons[i])
-    print(fila_pokemons)
+        print(f'Passo {i+1}', fila_pokemons)
 
     # Remoção da fila
-    print("\n2 - Removendo elemento da fila...")
-    fila_pokemons.remover()
-    print(fila_pokemons)
+    print("\n2 - Removendo elementos da fila...")
+    for i in range(fila_pokemons.tamanho):
+        print(f'Passo {i+1}', fila_pokemons)
+        fila_pokemons.remover()
+    print(f'Passo {i+2}', fila_pokemons)
 
     # Vazio
     print("\n3 - Mostrando se a fila está vazia ou não...")
     vazia: bool = fila_pokemons.vazia()
     print("Fila", "Vazia" if vazia else "Não vazia")
+
+    # Preenchendo a fila novamente
+    print("\nPreenchendo a fila novamente...")
+    for i in range(6):
+        fila_pokemons.inserir(pokemons[i])
 
     # Tamanho
     print("\n4 - Exibindo o tamanho da fila...")
