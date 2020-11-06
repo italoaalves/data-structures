@@ -22,7 +22,7 @@ if __name__ == "__main__":
             print("Você precisa inserir um valor inteiro positivo.")
         except ValueError:
             print("Você precisa inserir um valor inteiro positivo.")
-        
+
     system('cls' if name == 'nt' else 'clear')
 
     aleatorio = quantidade_pokemons != 150
