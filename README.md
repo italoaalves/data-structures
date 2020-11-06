@@ -3,14 +3,14 @@ Repositório do Projeto da disciplina de Estruturas de Dados. Escohemos Pokemons
 
 ## Como executar este projeto
 ```console
-$ git clone https://github.com/italoaalves/projeto-ed/
-$ cd projeto-ed
+git clone https://github.com/italoaalves/projeto-ed/
+cd projeto-ed
 
-$ virtualenv env
-$ ./env/bin/activate
-$ pip install -r requirements.txt
+virtualenv env
+./env/bin/activate
+pip install -r requirements.txt
 
-$ python app.py
+python app.py
 ```
 
 ## Pokeapi
