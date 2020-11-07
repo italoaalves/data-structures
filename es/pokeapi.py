@@ -42,7 +42,7 @@ def captura_pokemons(quantidade: int = 1, aleatorio: bool = False) -> list:
     if aleatorio and quantidade > 890:
         for _ in range(quantidade - 890):
             pokemons.inserir(pokemons.tamanho+1,
-                             pokemons.elemento(randint(0, 889)))
+                             pokemons.elemento(randint(1, 890)))
     elif quantidade > 890 and not aleatorio:
         raise Exception("Só existem 890 pokemons.")
 
