@@ -49,7 +49,7 @@ class FilaEncadeada:
     def elemento(self) -> object:
         if(self.vazia()):
             raise EstruturaException('A fila está vazia')
-        return self.__head
+        return self.__head.dado
 
     def __str__(self) -> str:
         saida: str = 'Fila: ['

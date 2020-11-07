@@ -118,7 +118,7 @@ class ListaEncadeada:
                 raise EstruturaException('Posição inválida para busca')
 
             if posicao == 1:
-                return self.__head
+                return self.__head.dado
 
         except TypeError:
             raise EstruturaException('A posição deve ser um valor inteiro')

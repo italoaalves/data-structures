@@ -44,7 +44,7 @@ class PilhaEncadeada:
     def elemento(self) -> object:
         if(self.vazia()):
             raise EstruturaException('A pilha está vazia')
-        return self.__head
+        return self.__head.dado
 
     def __str__(self) -> str:
         saida: str = 'Pilha: ['
