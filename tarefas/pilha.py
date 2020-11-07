@@ -15,7 +15,7 @@ def tarefas_pilha(quantidade_pokemons: int, pokemons: object) -> None:
     # Inserção pilha
     print("\n1 - Inserindo dados na pilha...")
     for i in range(6):
-        pilha_pokemons.inserir(pokemons[i])
+        pilha_pokemons.inserir(pokemons.elemento(i+1))
         print(f'passo {i+1}:', pilha_pokemons)
 
     # Remoção da pilha
@@ -33,7 +33,7 @@ def tarefas_pilha(quantidade_pokemons: int, pokemons: object) -> None:
     # Reinserindo elementos
     print("\nPreenchendo a pilha novamente...")
     for i in range(6):
-        pilha_pokemons.inserir(pokemons[i])
+        pilha_pokemons.inserir(pokemons.elemento(i+1))
 
     # Tamanho
     print("\n4 - Exibindo o tamanho da pilha...")
