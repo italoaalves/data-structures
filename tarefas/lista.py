@@ -4,7 +4,7 @@ from estruturas.excecoes import EstruturaException
 from estruturas.lista import ListaEncadeada
 
 
-def tarefas_lista(quantidade_pokemons: int, pokemons: list) -> None:
+def tarefas_lista(quantidade_pokemons: int, pokemons: object) -> None:
     """Script que executa as tarefas
     que cumprem os requisitos do projeto
     para lista encadeada
@@ -18,7 +18,7 @@ def tarefas_lista(quantidade_pokemons: int, pokemons: list) -> None:
     # Inserção
     print("\n1 - Inserindo dados na lista...")
     for i in range(quantidade_pokemons):
-        lista_pokemons.inserir(i + 1, pokemons[i])
+        lista_pokemons.inserir(i + 1, pokemons.elemento(i+1))
     print(lista_pokemons)
 
     # Remoção
@@ -28,7 +28,7 @@ def tarefas_lista(quantidade_pokemons: int, pokemons: list) -> None:
 
     # Reinserindo elemento na lista
     lista_pokemons.inserir(quantidade_pokemons,
-                           pokemons[quantidade_pokemons-1])
+                           pokemons.elemento(quantidade_pokemons))
 
     # Vazio
     print("\n3 - Mostrando se a lista está vazia ou não...")
@@ -47,7 +47,7 @@ def tarefas_lista(quantidade_pokemons: int, pokemons: list) -> None:
 
     # Ordenar lista
     print("\n6 - Ordenando a lista pelo peso do Pokemon...")
-    lista_pokemons.ordenar_por("peso")
+    # lista_pokemons.ordenar_por("peso")
     print(lista_pokemons)
 
     # Busca

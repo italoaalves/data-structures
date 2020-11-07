@@ -1,7 +1,7 @@
 from estruturas.fila import FilaEncadeada
 
 
-def tarefas_fila(quantidade_pokemons: int, pokemons: list) -> None:
+def tarefas_fila(quantidade_pokemons: int, pokemons: object) -> None:
     """Script que executa as tarefas
     que cumprem os requisitos do projeto
     para fila encadeada
@@ -15,7 +15,7 @@ def tarefas_fila(quantidade_pokemons: int, pokemons: list) -> None:
     # Inserção fila
     print("\n1 - Inserindo dados na fila...")
     for i in range(6):
-        fila_pokemons.inserir(pokemons[i])
+        fila_pokemons.inserir(pokemons.elemento(i+1))
         print(f'Passo {i+1}', fila_pokemons)
 
     # Remoção da fila
@@ -33,7 +33,7 @@ def tarefas_fila(quantidade_pokemons: int, pokemons: list) -> None:
     # Preenchendo a fila novamente
     print("\nPreenchendo a fila novamente...")
     for i in range(6):
-        fila_pokemons.inserir(pokemons[i])
+        fila_pokemons.inserir(pokemons.elemento(i+1))
 
     # Tamanho
     print("\n4 - Exibindo o tamanho da fila...")

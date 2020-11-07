@@ -1,7 +1,7 @@
 from estruturas.pilha import PilhaEncadeada
 
 
-def tarefas_pilha(quantidade_pokemons: int, pokemons: list) -> None:
+def tarefas_pilha(quantidade_pokemons: int, pokemons: object) -> None:
     """Script que executa as tarefas
     que cumprem os requisitos do projeto
     para pilha encadeada

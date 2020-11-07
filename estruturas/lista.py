@@ -98,17 +98,47 @@ class ListaEncadeada:
         except:
             raise
 
+    def estende(self, novaLista: object) -> None:
+        try:
+            if self.vazia():
+                if self.__tamanho != 1:
+                    raise EstruturaException(
+                        'lista vazia, insira apenas na posição 1')
+                self.__head = novaLista.head
+                self.__tamanho += novaLista.tamanho
+                return
+
+            if self.__tamanho == 1:
+                self.__head.prox = novaLista.head
+                self.__tamanho += novaLista.tamanho
+                return
+
+            cursor = self.__head
+            contador = 1
+
+            while (contador < self.__tamanho - 1) and (cursor != None):
+                cursor = cursor.prox
+                contador += 1
+
+            if cursor == None:
+                cursor.prox = novaLista.head
+                self.__tamanho += novaLista.tamanho
+        except:
+            raise
+
     def elemento(self, posicao: int) -> object:
         try:
             assert posicao > 0
 
             if self.vazia():
                 raise EstruturaException('A lista está vazia')
-            cursor = self.__head
-            contador = 1
+
+            cursor: object = self.__head
+            contador: int = 1
 
             while (contador <= posicao - 1) and (cursor != None):
                 cursor = cursor.prox
+
                 if contador == posicao - 1:
                     return cursor.dado
                 else:
@@ -118,7 +148,7 @@ class ListaEncadeada:
                 raise EstruturaException('Posição inválida para busca')
 
             if posicao == 1:
-                return self.__head
+                return self.__head.dado
 
         except TypeError:
             raise EstruturaException('A posição deve ser um valor inteiro')
