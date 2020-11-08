@@ -19,7 +19,7 @@ async def captura_pokemon(id: int, lista: ListaEncadeada) -> None:
             peso: float = pokemon_dict["weight"]
             tipo: str = pokemon_dict["types"][0]["type"]["name"]
 
-            pokemon = Pokemon(id, nome, altura, peso, tipo)
+            pokemon: Pokemon = Pokemon(id, nome, altura, peso, tipo)
             lista.inserir(lista.tamanho+1, pokemon)
 
 
