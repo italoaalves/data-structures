@@ -1,4 +1,4 @@
-# ProjetoED
+# Estruturas de dados básicas
 Repositório do Projeto da disciplina de Estruturas de Dados. Escohemos Pokemons para nosso modelo de dado.
 
 ## Como executar este projeto
