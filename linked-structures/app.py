@@ -1,11 +1,11 @@
 from random import randint
 from os import system, name
 
-from es.pokeapi import captura_pokemons
+from clients.pokeapi_client import fetch_pokemons
 
-from tarefas.lista import tarefas_lista
-from tarefas.fila import tarefas_fila
-from tarefas.pilha import tarefas_pilha
+from tasks.list_task import list_task
+from tasks.queue_task import queue_task
+from tasks.stack_task import stack_task
 
 
 if __name__ == "__main__":
@@ -13,10 +13,10 @@ if __name__ == "__main__":
 
     while True:
         try:
-            quantidade_pokemons: int = int(
+            pokemon_count: int = int(
                 input("Insira a quantidade de pokemons a lista: "))
-            assert isinstance(quantidade_pokemons,
-                              int) and quantidade_pokemons > 0
+            assert isinstance(pokemon_count,
+                              int) and pokemon_count > 0
             break
         except AssertionError:
             print("Você precisa inserir um valor inteiro positivo.")
@@ -25,16 +25,16 @@ if __name__ == "__main__":
 
     system('cls' if name == 'nt' else 'clear')
 
-    aleatorio = quantidade_pokemons != 150
-    tarefas_lista(quantidade_pokemons, captura_pokemons(
-        quantidade_pokemons, aleatorio))
+    random_number = pokemon_count != 150
+    list_task(pokemon_count, fetch_pokemons(
+        pokemon_count, random_number))
 
     input("Enter para continuar")
 
-    tarefas_fila(6, captura_pokemons(6, aleatorio=True))
+    queue_task(6, fetch_pokemons(6, random_number=True))
 
     input("Enter para continuar")
 
-    tarefas_pilha(6, captura_pokemons(6, aleatorio=True))
+    stack_task(6, fetch_pokemons(6, random_number=True))
 
     input("Enter para finalizar\n")
